@@ -1,0 +1,19 @@
+/* default box-sizing can make layout confusing; set global */
+* { box-sizing: border-box; }
+
+.box {
+  width: 300px;               /* content width if box-sizing: content-box */
+  padding: 20px;             /* space inside the border */
+  border: 4px solid #2c3e50; /* border around padding */
+  margin: 20px;              /* space outside the border */
+  background: #ecf0f1;
+}
+
+/* another example with different sizes */
+.box-border {
+  width: 300px;
+  padding: 10px;
+  border: 6px dotted #8e44ad;
+  margin: 10px;
+  background: #f9f5ff;
+}

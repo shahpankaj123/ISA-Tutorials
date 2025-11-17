@@ -1,0 +1,19 @@
+.become-block {
+  display: block;      /* now behaves like a block: full-width, can set margin-top */
+  background: #ffd;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.become-inline {
+  display: inline;     /* behaves inline; won't take full line */
+  background: #def;
+  padding: 4px;
+}
+
+.badge {
+  display: inline-block; /* allows width/height yet flows inline */
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin-right: 8px;
+}

@@ -1,0 +1,22 @@
+body, html { height: 100%; margin: 0; }
+.page {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  transition: background 0.2s;
+}
+
+/* Default for large screens (desktop) */
+.page { background: linear-gradient(135deg, #a8dadc, #457b9d); color: #fff; }
+
+/* For tablets */
+@media (max-width: 1024px) {
+  .page { background: linear-gradient(135deg, #f1faee, #a8dadc); color: #222; }
+}
+
+/* For phones */
+@media (max-width: 600px) {
+  .page { background: #ffe5d9; color: #111; padding: 20px; text-align: center; }
+}

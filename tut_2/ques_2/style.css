@@ -1,0 +1,23 @@
+/* universal selector */
+* { box-sizing: border-box; }
+
+/* element selector */
+h2 { color: #2c3e50; }
+
+/* class selector */
+.intro { font-style: italic; }
+
+/* id selector */
+#special { color: crimson; font-weight: bold; }
+
+/* descendant selector */
+#container a { text-decoration: none; }
+
+/* child selector (only direct children) */
+ul.list > li { padding: 6px 0; }
+
+/* attribute selector */
+input[data-foo="bar"] { border: 2px dashed #999; padding: 8px; }
+
+/* pseudo-class */
+a.link:hover { text-decoration: underline; cursor: pointer; }

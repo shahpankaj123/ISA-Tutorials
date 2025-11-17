@@ -1,0 +1,21 @@
+.sidebar {
+  float: left;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-right: 20px;
+  background: #f0f8ff;
+}
+
+.content {
+  margin-left: 230px; /* or let it flow beside float */
+  padding: 10px;
+  border: 1px solid #eee;
+}
+
+/* clearfix to clear floats */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}

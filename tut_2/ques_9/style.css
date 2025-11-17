@@ -1,0 +1,47 @@
+.text-example {
+    color: #2c3e50;               /* (a) Color */
+    text-align: center;           /* (b) Text-align: left, right, center, justify */
+    text-decoration: underline;   /* (c) underline, line-through, overline, none */
+}
+
+.list-example {
+    list-style: square inside;   /* (a) list-style : type | position | image */
+    /* types: disc, circle, square | inside, outside */
+}
+
+/* Table Example */
+.table-example {
+    width: 300px;
+    border: 2px solid #333;      /* (a) Border */
+    border-color: red blue green orange; /* (b) border-color (clockwise) */
+    border-collapse: collapse;   /* (c) Collapse table borders */
+}
+
+.table-example th,
+.table-example td {
+    border: 1px solid #777;      /* inner borders */
+    padding: 8px;
+}
+
+/* Rounded box example */
+.rounded-box {
+    margin-top: 20px;
+    width: 200px;
+    padding: 15px;
+    text-align: center;
+    background: #ecf0f1;
+    border: 2px solid #2c3e50;
+    border-radius: 12px;         /* (d) Rounds corners */
+}
+
+.font-example {
+    font: italic small-caps bold 20px "Times New Roman"; /* (a) shorthand */
+
+    font-family: Arial, Helvetica, sans-serif;  /* (b) Font-family */
+
+    font-size: 22px;             /* (c) font-size */
+
+    font-weight: 700;            /* (d) font-weight: normal | bold | 100-900 */
+
+    font-style: italic;          /* (e) normal | italic | oblique */
+}

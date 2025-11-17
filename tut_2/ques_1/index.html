@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CSS Linking Demo</title>
+
+  <!-- 1) External stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- 2) Internal stylesheet -->
+  <style>
+    .internal { color: teal; }
+  </style>
+</head>
+<body>
+  <h1 class="external">External stylesheet heading</h1>
+  <p class="internal">This paragraph is styled using an internal &lt;style&gt; block.</p>
+
+  <!-- 3) Inline style -->
+  <p style="color: purple; font-weight: bold;">This paragraph is styled inline.</p>
+</body>
+</html>
