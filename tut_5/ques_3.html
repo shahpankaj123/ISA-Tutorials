@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Search</title>
+</head>
+<body>
+
+    <label>Enter name:</label>
+    <input type="text" id="nameInput">
+
+    <button id="searchButton">Search</button>
+
+    <script>
+        const sampleObject = [
+            { name: "Bishal", age: 26, city: "Salyan" },
+            { name: "Shyam", age: 12, city: "Kathmandu" }
+        ];
+
+        function searchUser(name) {
+            for (let i = 0; i < sampleObject.length; i++) {
+                if (sampleObject[i].name.toLowerCase() === name.toLowerCase()) {
+                    return sampleObject[i].age;
+                }
+            }
+            return "User not found";
+        }
+
+        document.getElementById('searchButton').addEventListener('click', function () {
+            let enteredName = document.getElementById('nameInput').value;
+
+            let result = searchUser(enteredName);
+
+            if (result === "User not found") {
+                console.log(`${enteredName}: User not found`);
+            } else {
+                console.log(`${enteredName}'s age is ${result}`);
+            }
+        });
+    </script>
+
+</body>
+</html>

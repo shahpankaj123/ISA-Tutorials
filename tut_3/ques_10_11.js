@@ -4,4 +4,5 @@ arr.push(10);
 console.log(arr);
 
 arr.shift();
+arr.shift();
 console.log(arr);
