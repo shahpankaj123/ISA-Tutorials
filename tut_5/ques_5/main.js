@@ -9,7 +9,7 @@ function fetchUserData(userId, callback) {
     };
 
     callback(userData);
-  }, 10000);
+  }, 5000);
 }
 
 // 2. Callback function

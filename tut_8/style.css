@@ -1,0 +1,35 @@
+body {
+    background: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+.signup-box {
+    width: 300px;
+    background: #fff;
+    padding: 20px;
+    margin: 100px auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.signup-box h2 {
+    text-align: center;
+}
+
+.signup-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.signup-box button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.signup-box button:hover {
+    background: #0056b3;
+}
