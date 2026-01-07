@@ -1,23 +1,60 @@
 <?php
+include "connection.php";
+
 $movies = [];
 $error = "";
 
 if (isset($_GET['s']) && $_GET['s'] !== "") {
-    $search = urlencode($_GET['s']);
-    $apiKey = "67652950";
-    $url = "https://www.omdbapi.com/?s=$search&apikey=$apiKey";
+    $search = trim($_GET['s']); 
+    $search_db = mysqli_real_escape_string($conn, $search); 
+    $search_api = urlencode($search); 
 
-    $response = file_get_contents($url);
+    $query = "SELECT * FROM movie WHERE Title LIKE '%$search_db%'";
+    $result = mysqli_query($conn, $query);
 
-    if ($response === FALSE) {
-        $error = "Unable to fetch data from API.";
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $movies[] = $row;
+        }
     } else {
-        $data = json_decode($response, true);
+        $apiKey = "67652950";
+        $url = "https://www.omdbapi.com/?s=$search_api&apikey=$apiKey";
 
-        if ($data['Response'] === "True") {
-            $movies = $data['Search'];
+        $response = file_get_contents($url);
+
+        if ($response === FALSE) {
+            $error = "Unable to fetch data from API.";
         } else {
-            $error = $data['Error'];
+            $data = json_decode($response, true);
+
+            if ($data['Response'] === "True") {
+                $movies_api = $data['Search'];
+
+                foreach ($movies_api as $movie) {
+                    $title = mysqli_real_escape_string($conn, $movie['Title']);
+                    $year = mysqli_real_escape_string($conn, $movie['Year']);
+                    $type = mysqli_real_escape_string($conn, $movie['Type']);
+                    $poster = mysqli_real_escape_string($conn, $movie['Poster']);
+
+                    $check_query = "SELECT * FROM movie WHERE imdbID='" . mysqli_real_escape_string($conn, $movie['imdbID']) . "'";
+                    $check_result = mysqli_query($conn, $check_query);
+
+                    if (mysqli_num_rows($check_result) === 0) {
+                        $insert_query = "INSERT INTO movie (Title, Year, Type, Poster, imdbID) VALUES 
+                                         ('$title', '$year', '$type', '$poster', '" . mysqli_real_escape_string($conn, $movie['imdbID']) . "')";
+                        mysqli_query($conn, $insert_query);
+                    }
+
+                    $movies[] = [
+                        'Title' => $title,
+                        'Year' => $year,
+                        'Type' => $type,
+                        'Poster' => $poster
+                    ];
+                }
+            } else {
+                $error = $data['Error'];
+            }
         }
     }
 }
@@ -52,7 +89,11 @@ if (isset($_GET['s']) && $_GET['s'] !== "") {
         <?php foreach ($movies as $movie): ?>
             <tr>
                 <td>
-                    <img src="<?php echo $movie['Poster']; ?>" width="80">
+                    <?php if ($movie['Poster'] && $movie['Poster'] !== "N/A"): ?>
+                        <img src="<?php echo $movie['Poster']; ?>" width="80">
+                    <?php else: ?>
+                        N/A
+                    <?php endif; ?>
                 </td>
                 <td><?php echo $movie['Title']; ?></td>
                 <td><?php echo $movie['Year']; ?></td>
@@ -65,3 +106,5 @@ if (isset($_GET['s']) && $_GET['s'] !== "") {
 </body>
 <script src="main.js"></script>
 </html>
+
+
